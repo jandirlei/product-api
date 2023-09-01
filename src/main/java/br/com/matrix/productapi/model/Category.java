@@ -1,6 +1,7 @@
 package br.com.matrix.productapi.model;
 
 import br.com.matrix.productapi.dto.CategoryDTO;
+import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -11,6 +12,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
+@Entity
 public class Category {
 	
 	@Id

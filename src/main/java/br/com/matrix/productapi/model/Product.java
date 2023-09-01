@@ -1,15 +1,13 @@
 package br.com.matrix.productapi.model;
 
-import java.util.Locale.Category;
-
 import org.hibernate.annotations.ManyToAny;
 
 import br.com.matrix.productapi.dto.ProductDTO;
+import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
-import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -17,7 +15,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
-@Table
+@Entity
 public class Product {
 	
 	@Id
@@ -42,7 +40,9 @@ public class Product {
 		product.setPreco(productDTO.getPreco());
 		product.setDescricao(productDTO.getDescricao());
 		product.setProductIdentifier(product.getProductIdentifier());
+		if (productDTO.getCategory()!= null) {
+			product.setCategory(Category.convert(productDTO.getCategory()));
+		}
 		return product;
 	}
-
 }

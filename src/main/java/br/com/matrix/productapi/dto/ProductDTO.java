@@ -12,33 +12,30 @@ import lombok.NoArgsConstructor;
 @Data
 public class ProductDTO {
 	
-	private long id;
+	@NotBlank
+	private String productIdentifier;
 	
 	@NotBlank
 	private String nome;
 	
-	@NotNull
-	private float preco;
-	
 	@NotBlank
 	private String descricao;
 	
-	@NotBlank
-	private String productIdentifier;
+	@NotNull
+	private float preco;
 	
 	@NotNull
 	private CategoryDTO category;
 	
 	public static ProductDTO convert(Product product) {
 		ProductDTO productDTO = new ProductDTO();
-		productDTO.setId(product.getId());
 		productDTO.setNome(product.getNome());
 		productDTO.setPreco(product.getPreco());
-		productDTO.setDescricao(product.getDescricao());
 		productDTO.setProductIdentifier(product.getProductIdentifier());
+		productDTO.setDescricao(product.getDescricao());
 		
 		if (product.getCategory()!= null) {
-			productDTO.setCategoryDTO(CategoryDTO.convert(product.getCategory()));
+			productDTO.setCategory(CategoryDTO.convert(product.getCategory()));
 		}
 		return productDTO;
 	}
